@@ -6,6 +6,7 @@ import WelcomeScreen from '../screens/WelcomeScreen';
 import HomeScreen from "../screens/HomeScreen";
 import SearchScreen from "../screens/SearchScreen";
 import SavedScreen from "../screens/SavedScreen";
+import { FaceSmileIcon, HomeIcon, MagnifyingGlassIcon, MoonIcon } from "react-native-heroicons/outline";
 
 
 
@@ -21,7 +22,7 @@ export default function AppNavigation() {
     function HomeStack() {
         return (
             <Stack.Navigator screenOptions={{
-                headerShown: false
+                headerShown: false,
             }}
                 initialRouteName='Welcome'
 
@@ -37,9 +38,24 @@ export default function AppNavigation() {
     function HomeTabs() {
         return (
             <Tab.Navigator>
-                <Tab.Screen name="Home" component={HomeScreen} />
-                <Tab.Screen name="Search" component={SearchScreen} />
-                <Tab.Screen name="Saved" component={SavedScreen} />
+                <Tab.Screen name="Home" component={HomeScreen} options={{
+                    tabBarIcon: ({ focused }) => (
+                        <HomeIcon size={24} color={focused ? "blue" : "gray"}
+                        />
+                    ),
+                }}
+                />
+
+                <Tab.Screen name="Search" component={SearchScreen} options={{
+                    tabBarIcon: ({ focused }) => (
+                        <MagnifyingGlassIcon size={24} color={focused ? "blue" : "gray"} />
+                    ),
+                }} />
+                <Tab.Screen name="Saved" component={SavedScreen} options={{
+                    tabBarIcon: ({ focused }) => (
+                        <FaceSmileIcon size={24} color={focused ? "blue" : "gray"} />
+                    ),
+                }} />
             </Tab.Navigator>
         )
     }
