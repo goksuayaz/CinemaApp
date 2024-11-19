@@ -12,7 +12,8 @@ export default function App() {
     <QueryClientProvider client={queryClient}>
 
 
-      < AppNavigation />;
+      < AppNavigation />
+
     </QueryClientProvider>
 
 

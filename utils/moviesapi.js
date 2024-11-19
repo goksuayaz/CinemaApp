@@ -23,6 +23,8 @@ const movieApiCall = async (endpoints, params) => {
 
     try {
         const response = await axios.request(options);
+        return response.data;
+
 
     } catch (error) {
         console.log(error);

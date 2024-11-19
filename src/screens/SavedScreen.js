@@ -4,7 +4,7 @@ import React from 'react'
 export default function SavedScreen() {
     return (
         <View>
-            <Text>SavedScreen</Text>
+            <Text> SavedScreen </Text>
         </View>
     )
 }

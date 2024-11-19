@@ -1,1 +1,1 @@
-export const movieapikey = "aff5bafe48cf80f34ab6564ce5d0420b";
+export const movieapikey = "3c9dffb01d616f83ebd7a503758f915c";

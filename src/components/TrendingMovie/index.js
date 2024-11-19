@@ -9,6 +9,7 @@ var { width } = Dimensions.get("window");
 
 
 export default function TrendingMovies({ data }) {
+    console.log("Trending Movies", data);
 
     const navigation = useNavigation();
 

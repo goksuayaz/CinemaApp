@@ -43,7 +43,7 @@ export default function WelcomeScreen() {
 
                 </View>
                 <Text
-                    style={{ color: 'white', fontWeight: 'bold', margin: 10, fontSize: 50, }}> Movie Cinema</Text>
+                    style={{ color: 'white', fontWeight: 'bold', margin: 10, fontSize: 50 }}> Movie Cinema</Text>
                 <Text
                     style={{ color: 'white' }}> Watch and find movies that bring your mood back! </Text>
 
@@ -70,7 +70,7 @@ export default function WelcomeScreen() {
 
 
             </View>
-            <Text style={{ color: "gray" }}>Welcome Screen</Text>
+
         </View >
     );
 }

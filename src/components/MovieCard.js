@@ -4,7 +4,7 @@ import { image500 } from '../../utils/moviesapi';
 
 var { width, height } = Dimensions.get("window");
 
-export default function MovieCard({ item, handleClick, genre }) {
+export default function MovieCard({ item, handleClick }) {
 
     console.log("Movie Image", item.poster_path);
     return (

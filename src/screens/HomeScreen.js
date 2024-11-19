@@ -18,7 +18,7 @@ export default function HomeScreen() {
         queryKey: ["trendingMovies"],
         queryFn: fetchTrendingMovie,
         onSuccess: (data) => {
-            setTrending(data.results)
+            setTrending(data.results);
         },
 
         onError: (error) => {
@@ -28,7 +28,7 @@ export default function HomeScreen() {
     });
 
 
-    console.log("Trending Movies", trending);
+    // console.log("Trending Movies", trending);
 
     return (
 
