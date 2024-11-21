@@ -7,6 +7,7 @@ import HomeScreen from "../screens/HomeScreen";
 import SearchScreen from "../screens/SearchScreen";
 import SavedScreen from "../screens/SavedScreen";
 import { FaceSmileIcon, HomeIcon, MagnifyingGlassIcon } from "react-native-heroicons/outline";
+import MovieScreen from '../screens/MovieScreen';
 
 
 
@@ -26,8 +27,10 @@ export default function AppNavigation() {
 
 
             >
-                <Stack.Screen name="Welcome" component={WelcomeScreen} />
+
                 <Stack.Screen name="HomeTab" component={HomeTabs} />
+                <Stack.Screen name="Welcome" component={WelcomeScreen} />
+                <Stack.Screen name="Movie" component={MovieScreen} />
 
 
             </Stack.Navigator>

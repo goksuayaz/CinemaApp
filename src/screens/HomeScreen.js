@@ -3,16 +3,25 @@ import React, { useState } from 'react'
 import { StatusBar } from 'expo-status-bar'
 import { BellIcon, MagnifyingGlassIcon } from "react-native-heroicons/outline";
 import { useNavigation } from '@react-navigation/native';
-import TrendingMovies from '../components/TrendingMovie';
+import TrendingMovie from '../components/TrendingMovie';
 import { useQuery } from '@tanstack/react-query';
-import { fetchTrendingMovie } from '../../utils/moviesapi';
+import { fetchTrendingMovie, fetchTopRatedMovie, fetchPopularMovie, fetchUpComingMovie } from '../../utils/moviesapi';
 import Loading from '../components/TrendingMovie/Loading';
+import TopRatedMovies from '../components/TopRatedMovies';
+import PopularMovie from "../components/PopularMovie";
+import UpcomingMovie from "../components/UpcomingMovie";
+
 
 export default function HomeScreen() {
 
 
     const navigation = useNavigation();
     const [trending, setTrending] = useState([]);
+    const [topRated, setTopRated] = useState([]);
+    const [popular, setPopular] = useState([]);
+    const [upcoming, setUpComing] = useState([]);
+
+
 
     const { isLoading: isTrendingLoading } = useQuery({
         queryKey: ["trendingMovies"],
@@ -28,7 +37,55 @@ export default function HomeScreen() {
     });
 
 
-    // console.log("Trending Movies", trending);
+
+    const { isLoading: isTopRatedLoading } = useQuery({
+        queryKey: ["topratedMovies"],
+        queryFn: fetchTopRatedMovie,
+        onSuccess: (data) => {
+            setTopRated(data.results);
+        },
+
+        onError: (error) => {
+            console.log("Error fetching Top Rated Movies", error);
+        },
+
+    });
+
+
+    const { isLoading: isPopularLoading } = useQuery({
+        queryKey: ["popularMovies"],
+        queryFn: fetchPopularMovie,
+        onSuccess: (data) => {
+            setPopular(data.results);
+        },
+
+        onError: (error) => {
+            console.log("Error fetching Popular Movies", error);
+        },
+
+    });
+
+
+
+    const { isLoading: isUpComingLoading } = useQuery({
+        queryKey: ["upcomingMovies"],
+        queryFn: fetchUpComingMovie,
+        onSuccess: (data) => {
+            setUpComing(data.results);
+        },
+
+        onError: (error) => {
+            console.log("Error fetching Upcoming Movies", error);
+        },
+
+    });
+
+
+
+
+
+
+
 
     return (
 
@@ -112,13 +169,27 @@ export default function HomeScreen() {
                     <Loading />
                 ) : (
                     <ScrollView>
-                        {trending?.length > 0 && <TrendingMovies data={trending} />}
 
+                        {/* {Trending Movies} */}
+                        {trending?.length > 0 && <TrendingMovie data={trending} />}
+
+                        {/* {Popular Movies} */}
+                        {popular?.length > 0 && (
+                            <PopularMovie title="Popular" data={popular} />
+                        )}
+
+                        {/* {Top Rated Movies} */}
+                        {topRated?.length > 0 && (
+                            <TopRatedMovies genre={genre} title="Top Rated"
+                                data={topRated} />)}
+
+                        {/* {Upcoming Movies} */}
+                        {upcoming?.length > 0 && (
+                            <UpcomingMovie title="Upcoming"
+                                data={upcoming} />)}
 
                     </ScrollView>
                 )}
-
-
 
 
 
